@@ -104,4 +104,10 @@ public class ProductServiceImpl implements ProductService {
     public Product findLastByName(String name) {
         return productRepository.findLastByName(name);
     }
+
+    @Override
+    public Product findByNameOrDesc(String name, String description) {
+        return productRepository.findByProductOrDescription(name, description);
+    }
+
 }

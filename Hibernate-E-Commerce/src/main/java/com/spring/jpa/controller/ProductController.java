@@ -105,4 +105,10 @@ public class ProductController {
         return ResponseEntity.ok(productService.findLastByName(name));
     }
 
+    // @Query
+    @GetMapping("/get/{name}/{description}")
+    public ResponseEntity<Product> findByNameOrDescription(@PathVariable String name, @PathVariable String description){
+        return ResponseEntity.ok(productService.findByNameOrDesc(name, description));
+    }
+
 }

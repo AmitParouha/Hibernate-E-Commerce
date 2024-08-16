@@ -24,4 +24,7 @@ public interface ProductService {
     List<Product> findByName(String name);
     Product findFirstByName(String name);
     Product findLastByName(String name);
+
+    // @Query
+    public Product findByNameOrDesc(String name, String description);
 }
