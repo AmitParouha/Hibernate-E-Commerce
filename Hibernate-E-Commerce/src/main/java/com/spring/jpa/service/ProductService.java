@@ -2,6 +2,7 @@ package com.spring.jpa.service;
 
 import com.spring.jpa.entity.Product;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface ProductService {
@@ -27,4 +28,7 @@ public interface ProductService {
 
     // @Query
     public Product findByNameOrDesc(String name, String description);
+
+    //named Query
+    public Product findByPrice(BigDecimal price);
 }

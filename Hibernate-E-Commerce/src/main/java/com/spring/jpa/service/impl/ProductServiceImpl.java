@@ -6,6 +6,7 @@ import com.spring.jpa.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -110,4 +111,8 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findByProductOrDescription(name, description);
     }
 
+    @Override
+    public Product findByPrice(BigDecimal price) {
+        return productRepository.findByPrice(price);
+    }
 }
