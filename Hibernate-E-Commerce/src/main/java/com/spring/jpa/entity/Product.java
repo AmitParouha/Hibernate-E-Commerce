@@ -1,5 +1,6 @@
 package com.spring.jpa.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -88,4 +89,10 @@ public class Product {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    // Child table
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    @JsonBackReference
+    private ProductCategory category;
 }
