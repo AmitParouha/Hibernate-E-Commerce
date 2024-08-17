@@ -1,7 +1,6 @@
 package com.spring.jpa;
 
 import com.spring.jpa.entity.Product;
-import com.spring.jpa.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
