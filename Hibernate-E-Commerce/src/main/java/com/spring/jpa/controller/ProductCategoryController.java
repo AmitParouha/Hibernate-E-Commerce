@@ -1,12 +1,8 @@
 package com.spring.jpa.controller;
 
-import com.spring.jpa.entity.Customer;
-import com.spring.jpa.entity.Product;
 import com.spring.jpa.entity.ProductCategory;
-import com.spring.jpa.repository.CustomerRepository;
 import com.spring.jpa.repository.ProductCategoryRepository;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
