@@ -31,4 +31,7 @@ public interface ProductService {
 
     //named Query
     public Product findByPrice(BigDecimal price);
+
+    // pagination and sorting
+    public List<Product> paginationAndSorting(int page, int size, String sortBy);
 }

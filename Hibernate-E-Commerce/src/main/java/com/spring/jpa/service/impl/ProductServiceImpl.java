@@ -4,6 +4,10 @@ import com.spring.jpa.entity.Product;
 import com.spring.jpa.repository.ProductRepository;
 import com.spring.jpa.service.ProductService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -106,13 +110,37 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findLastByName(name);
     }
 
+    // Use of @Query
     @Override
     public Product findByNameOrDesc(String name, String description) {
         return productRepository.findByProductOrDescription(name, description);
     }
 
+    // Use of @NamedQuery
     @Override
     public Product findByPrice(BigDecimal price) {
         return productRepository.findByPrice(price);
+    }
+
+    // Pagination and sorting implementation
+    @Override
+    public List<Product> paginationAndSorting(int pageNo, int size, String sortBy){
+        Pageable pageable = PageRequest.of(pageNo, size, Sort.by(sortBy).descending());
+        Page<Product> products = productRepository.findAll(pageable);
+
+        int totalPage = products.getTotalPages();
+        long totalElements = products.getTotalElements();
+        int numberOfElement = products.getNumberOfElements();
+        int pageSize = products.getSize();
+        boolean isLast = products.isLast();
+        boolean isFirst = products.isFirst();
+        System.out.println("Total Page : "+totalPage);
+        System.out.println("Total Elements : "+totalElements);
+        System.out.println("Total Elements in current page : "+numberOfElement);
+        System.out.println("Page size : "+pageSize);
+        System.out.println("Is Last Page : "+isLast);
+        System.out.println("Is first Page : "+isFirst);
+
+        return products.stream().toList();
     }
 }

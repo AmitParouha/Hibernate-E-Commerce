@@ -112,9 +112,17 @@ public class ProductController {
         return ResponseEntity.ok(productService.findByNameOrDesc(name, description));
     }
 
-    @GetMapping("/get/price/{price}")
+    @GetMapping("/get")
     public ResponseEntity<Product> findByPrice(@PathVariable BigDecimal price){
         return ResponseEntity.ok(productService.findByPrice(price));
     }
 
+    // Pagination and sorting
+    @GetMapping("/get/page/sort")
+    public ResponseEntity<List<Product>> paginationAndSorting(@RequestParam(defaultValue = "0") int page,
+                                                     @RequestParam(defaultValue = "5") int size,
+                                                     @RequestParam(defaultValue = "name") String sortBy )
+    {
+        return ResponseEntity.ok(productService.paginationAndSorting(page, size, sortBy));
+    }
 }
